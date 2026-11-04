@@ -52,7 +52,9 @@
       <Hosts>
         <Host xsi:type="MailHost">
           <Runtimes>
-            <Runtime resid="Commands.Url"/>
+            <Runtime resid="Commands.Url">
+              <Override type="javascript" resid="Commands.Js.Url"/>
+            </Runtime>
           </Runtimes>
           <DesktopFormFactor>
             <FunctionFile resid="Commands.Url"/>
@@ -99,6 +101,28 @@
               </LaunchEvents>
               <SourceLocation resid="Commands.Url"/>
             </ExtensionPoint>
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgComposeGroup">
+                  <Label resid="GroupLabel"/>
+                  <Control xsi:type="Button" id="msgComposeOpenPaneButton">
+                    <Label resid="TaskpaneButton.Label"/>
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label"/>
+                      <Description resid="TaskpaneButton.Tooltip"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
           </DesktopFormFactor>
         </Host>
       </Hosts>
@@ -110,6 +134,7 @@
         </bt:Images>
         <bt:Urls>
           <bt:Url id="Commands.Url" DefaultValue="https://sds-t.github.io/manseuto-ventures-outlook-add-in/commands.html"/>
+          <bt:Url id="Commands.Js.Url" DefaultValue="https://sds-t.github.io/manseuto-ventures-outlook-add-in/commands.js"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://sds-t.github.io/manseuto-ventures-outlook-add-in/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
