@@ -67,14 +67,14 @@ export function onMessageRecipientsChanged(event: Office.AddinCommands.Event) {
           </ul>
         `;
 
-        item.body.setSelectedDataAsync(
+        item.body.prependAsync(
           htmlBlock,
           { coercionType: Office.CoercionType.Html },
           (setResult) => {
             if (setResult.status === Office.AsyncResultStatus.Succeeded) {
-              console.log("[Add-in] SUCCESS: HTML block injected successfully.");
+              console.log("[Add-in] SUCCESS: HTML block prepended successfully.");
             } else {
-              console.error("[Add-in] ERROR: Failed to inject HTML block.", setResult.error);
+              console.error("[Add-in] ERROR: Failed to prepend HTML block.", setResult.error);
             }
             event.completed(); 
           }
